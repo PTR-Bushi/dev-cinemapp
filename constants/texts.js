@@ -1,1 +1,2 @@
-export const searchPlaceholder = "Buscar...";
+export const searchPlaceholder = "Digite o filme desejado...";
+export const searchButton = "Buscar";

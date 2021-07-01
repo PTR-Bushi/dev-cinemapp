@@ -1,9 +1,9 @@
-import { boxBG, darkBoxBorder, lightBoxBorder } from "./colors";
-import { boxBorder, generalPadding } from "./dimensions";
+import { appBG, boxBG, darkBoxBorder, lightBoxBorder } from "./colors";
+import { boxBorder, generalPadding, componentsSeparation } from "./dimensions";
 
 export const mainContainer = {
   flex: 1,
-  backgroundColor: "#f8f8f8",
+  backgroundColor: appBG,
   padding: generalPadding
 };
 
@@ -28,3 +28,15 @@ export const loweredBox = {
   borderLeftColor: lightBoxBorder,
   borderBottomColor: lightBoxBorder
 };
+
+export const elevatedButton = {
+  ...elevatedBox,
+  backgroundColor: "#fdfdfd",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center"
+};
+
+export const loweredButton = { ...elevatedButton, ...loweredBox };
+
+export const separatorVer = { height: componentsSeparation };

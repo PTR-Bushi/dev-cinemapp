@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TextInput } from "react-native";
-import { elevatedBox, mainContainer } from "../../constants/styles";
-import { searchPlaceholder } from "../../constants/texts";
+import {
+  loweredBox,
+  mainContainer,
+  separatorVer
+} from "../../constants/styles";
+import { searchButton, searchPlaceholder } from "../../constants/texts";
+import { PrimaryButton } from "../components/Buttons";
 
 const SearchBar = ({}) => (
   <View style={styles.searchBar}>
@@ -15,13 +20,15 @@ const SearchScreen = ({ navigation }) => {
   return (
     <View style={styles.mainContainer}>
       <SearchBar />
+      <View style={separatorVer} />
+      <PrimaryButton text={searchButton} onPress={() => {}} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   mainContainer: mainContainer,
-  searchBar: elevatedBox
+  searchBar: loweredBox
 });
 
 export default SearchScreen;
