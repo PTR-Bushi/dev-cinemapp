@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import React, { useCallback, useEffect, useState } from "react";
 import { View, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import { generalPadding } from "../../constants/dimensions";
 import { mainContainer } from "../../constants/styles";
@@ -42,9 +43,15 @@ const ResultsScreen = ({ route }) => {
   const performSearch = () =>
     getSearch(search).then(r => setMovies(r.data.Search));
 
+  useFocusEffect(
+    useCallback(() => {
+      readfromFavorites();
+      return () => {};
+    }, [])
+  );
+
   useEffect(() => {
     performSearch();
-    readfromFavorites();
     return () => {};
   }, []);
 
