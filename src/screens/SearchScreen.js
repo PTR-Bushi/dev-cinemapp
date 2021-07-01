@@ -29,6 +29,7 @@ const SearchScreen = ({ navigation }) => {
   const checkProceed = () => {
     if (searchParam.length < 3)
       return Alert.alert(searchErrorTitle, searchErrorText);
+    navigation.navigate("Results", { search: searchParam });
   };
   return (
     <View style={styles.mainContainer}>

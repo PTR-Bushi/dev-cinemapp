@@ -5,3 +5,5 @@ export const boxBorder = 1;
 export const boxWidth = "100%";
 
 export const componentsSeparation = 50;
+
+export const headerLeftSize = 25;

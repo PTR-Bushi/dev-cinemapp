@@ -8,11 +8,18 @@ import ResultsScreen from "../screens/ResultsScreen";
 import FavesScreen from "../screens/FavesScreen";
 import TabIcon from "../components/TabIcon";
 import { activeIcon, inactiveIcon } from "../../constants/colors";
+import HeaderLeft from "../components/HeaderLeft";
 
 const SearchStack = createStackNavigator();
 
 const SearchStackScreen = () => (
-  <SearchStack.Navigator>
+  <SearchStack.Navigator
+    screenOptions={{
+      headerBackTitleVisible: false,
+      headerLeft: ({ onPress, canGoBack }) =>
+        canGoBack ? <HeaderLeft onPress={onPress} /> : null
+    }}
+  >
     <SearchStack.Screen name="Search" component={SearchScreen} />
     <SearchStack.Screen name="Results" component={ResultsScreen} />
   </SearchStack.Navigator>

@@ -1,5 +1,16 @@
-import { appBG, boxBG, darkBoxBorder, lightBoxBorder } from "./colors";
-import { boxBorder, generalPadding, componentsSeparation } from "./dimensions";
+import {
+  appBG,
+  boxBG,
+  darkBoxBorder,
+  generalText,
+  lightBoxBorder
+} from "./colors";
+import {
+  boxBorder,
+  generalPadding,
+  componentsSeparation,
+  headerLeftSize
+} from "./dimensions";
 
 export const mainContainer = {
   flex: 1,
@@ -40,3 +51,9 @@ export const elevatedButton = {
 export const loweredButton = { ...elevatedButton, ...loweredBox };
 
 export const separatorVer = { height: componentsSeparation };
+
+export const headerLeftStyle = {
+  width: headerLeftSize,
+  height: headerLeftSize,
+  tintColor: generalText
+};
