@@ -21,19 +21,20 @@ const ResultsScreen = ({ route }) => {
   const saveFavorites = list =>
     AsyncStorage.setItem(STORAGE_FAVORITES, JSON.stringify(list));
 
-  const addFavorite = id => {
-    const newList = [...favorites];
-    if (newList.includes(id)) return;
-    newList.push(id);
+  const addFavorite = item => {
+    const newList = { ...favorites };
+    newList[item.imdbID] = {
+      itemPoster: item.Poster,
+      itemTitle: item.Title,
+      itemYear: item.Year
+    };
     saveFavorites(newList);
     setFavorites(newList);
   };
 
-  const removeFavorite = id => {
-    const newList = [...favorites];
-    if (!newList.includes(id)) return;
-    const idx = newList.indexOf(id);
-    newList.splice(idx, 1);
+  const removeFavorite = item => {
+    const newList = { ...favorites };
+    delete newList[item.imdbID];
     saveFavorites(newList);
     setFavorites(newList);
   };
@@ -64,9 +65,9 @@ const ResultsScreen = ({ route }) => {
               itemTitle={item.Title}
               itemYear={item.Year}
               selected={index == selected}
-              favorited={favorites.includes(item.imdbID)}
+              favorited={!!favorites[item.imdbID]}
               toggleFavorite={add =>
-                add ? addFavorite(item.imdbID) : removeFavorite(item.imdbID)
+                add ? addFavorite(item) : removeFavorite(item)
               }
             />
           </TouchableOpacity>

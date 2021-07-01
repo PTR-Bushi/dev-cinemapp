@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { STORAGE_FAVORITES } from "./constants/texts";
 import Navigator from "./src/navigation/RootNavigator";
 
-const defKeys = [{ key: STORAGE_FAVORITES, value: "[]" }];
+const defKeys = [{ key: STORAGE_FAVORITES, value: "{}" }];
 
 const initStorage = (keys = defKeys) => {
   keys.forEach(element => {
