@@ -13,12 +13,13 @@ import {
 } from "../../constants/texts";
 import { PrimaryButton } from "../components/Buttons";
 
-const SearchBar = ({ text, setText }) => (
+const SearchBar = ({ text, setText, submit }) => (
   <View style={styles.searchBar}>
     <TextInput
       placeholder={searchPlaceholder}
       value={text}
       onChangeText={setText}
+      onSubmitEditing={submit}
     />
   </View>
 );
@@ -33,7 +34,11 @@ const SearchScreen = ({ navigation }) => {
   };
   return (
     <View style={styles.mainContainer}>
-      <SearchBar text={searchParam} setText={text => setsearchParam(text)} />
+      <SearchBar
+        text={searchParam}
+        setText={text => setsearchParam(text)}
+        submit={checkProceed}
+      />
       <View style={separatorVer} />
       <PrimaryButton text={searchButton} onPress={checkProceed} />
     </View>
