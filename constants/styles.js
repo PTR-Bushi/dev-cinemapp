@@ -40,6 +40,8 @@ export const loweredBox = {
   borderBottomColor: lightBoxBorder
 };
 
+export const selectedBox = { ...loweredBox, backgroundColor: "#00000010" };
+
 export const elevatedButton = {
   ...elevatedBox,
   backgroundColor: "#fdfdfd",

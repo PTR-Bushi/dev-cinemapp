@@ -8,14 +8,14 @@ import {
   posterWidthBig,
   posterWidthSma
 } from "../../constants/dimensions";
-import { elevatedBox, loweredBox } from "../../constants/styles";
+import { elevatedBox, selectedBox } from "../../constants/styles";
 import { year } from "../../constants/texts";
 
 const StarCircle = ({ fill, onPress, width = 50 }) => (
   <TouchableOpacity onPress={onPress}>
     <View
       style={[
-        fill ? loweredBox : elevatedBox,
+        fill ? selectedBox : elevatedBox,
         {
           flex: 0,
           width: width,
