@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import { Alert, View, StyleSheet, TextInput } from "react-native";
 import {
   loweredBox,
   mainContainer,
@@ -8,9 +8,13 @@ import {
 import { searchButton, searchPlaceholder } from "../../constants/texts";
 import { PrimaryButton } from "../components/Buttons";
 
-const SearchBar = ({}) => (
+const SearchBar = ({ text, setText }) => (
   <View style={styles.searchBar}>
-    <TextInput placeholder={searchPlaceholder} />
+    <TextInput
+      placeholder={searchPlaceholder}
+      value={text}
+      onChangeText={setText}
+    />
   </View>
 );
 
@@ -19,7 +23,7 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <View style={styles.mainContainer}>
-      <SearchBar />
+      <SearchBar text={searchParam} setText={text => setsearchParam(text)} />
       <View style={separatorVer} />
       <PrimaryButton text={searchButton} onPress={() => {}} />
     </View>
