@@ -40,9 +40,9 @@ const Navigator = ({}) => (
     <Tab.Navigator
       tabBarOptions={{
         activeTintColor: activeIcon,
-        activeBackgroundColor: activeIcon + "80",
+        activeBackgroundColor: activeIcon + "40",
         inactiveTintColor: inactiveIcon,
-        inactiveBackgroundColor: activeIcon + "20"
+        inactiveBackgroundColor: activeIcon + "10"
       }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => (
