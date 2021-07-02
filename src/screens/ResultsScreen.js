@@ -12,6 +12,7 @@ const ResultsScreen = ({ route }) => {
   const [movies, setMovies] = useState([]);
   const [selected, setSelected] = useState(-1);
   const [favorites, setFavorites] = useState([]);
+  const [currentPage, setPage] = useState(1);
   const { search } = route.params;
 
   const readfromFavorites = () =>
@@ -43,6 +44,15 @@ const ResultsScreen = ({ route }) => {
   const performSearch = () =>
     getSearch(search).then(r => setMovies(r.data.Search));
 
+  const loadExtra = () => {
+    if (currentPage > 5) return;
+    getSearch(search, currentPage + 1).then(r => {
+      const newList = [...movies, ...r.data.Search];
+      setMovies(newList);
+    });
+    setPage(currentPage + 1);
+  };
+
   useFocusEffect(
     useCallback(() => {
       readfromFavorites();
@@ -59,6 +69,7 @@ const ResultsScreen = ({ route }) => {
     <View style={styles.mainContainer}>
       <FlatList
         data={movies}
+        onEndReached={loadExtra}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => (
           <TouchableOpacity

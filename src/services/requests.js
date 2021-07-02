@@ -7,4 +7,5 @@ export const getService = (url, params, headers) =>
     .then(r => r)
     .catch(e => console.log("FLAG E1", e));
 
-export const getSearch = search => getService(GET_URL + search).then(r => r);
+export const getSearch = (search, page = 1) =>
+  getService(GET_URL + search + `&page=${page}`).then(r => r);
