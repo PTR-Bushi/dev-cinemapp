@@ -1,14 +1,24 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
 import React, { useCallback, useEffect, useState } from "react";
-import { View, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Alert
+} from "react-native";
 import { generalPadding } from "../../constants/dimensions";
 import { mainContainer } from "../../constants/styles";
-import { STORAGE_FAVORITES } from "../../constants/texts";
+import {
+  noResultsText,
+  searchErrorTitle,
+  STORAGE_FAVORITES
+} from "../../constants/texts";
 import MovieCard from "../components/MovieCard";
 import { getSearch } from "../services/requests";
 
-const ResultsScreen = ({ route }) => {
+const ResultsScreen = ({ navigation, route }) => {
   const [movies, setMovies] = useState([]);
   const [selected, setSelected] = useState(-1);
   const [favorites, setFavorites] = useState([]);
@@ -42,7 +52,13 @@ const ResultsScreen = ({ route }) => {
   };
 
   const performSearch = () =>
-    getSearch(search).then(r => setMovies(r.data.Search));
+    getSearch(search).then(r => {
+      if (!r.data || !r.data.Search || !r.data.Search.length)
+        return Alert.alert(searchErrorTitle, noResultsText, [
+          { text: "Ok", onPress: () => navigation.goBack() }
+        ]);
+      setMovies(r.data.Search);
+    });
 
   const loadExtra = () => {
     if (currentPage > 5) return;
