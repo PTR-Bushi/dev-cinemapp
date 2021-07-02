@@ -23,6 +23,7 @@ const ResultsScreen = ({ navigation, route }) => {
   const [selected, setSelected] = useState(-1);
   const [favorites, setFavorites] = useState([]);
   const [currentPage, setPage] = useState(1);
+  const [resNum, setResNum] = useState(0);
   const { search } = route.params;
 
   const readfromFavorites = () =>
@@ -58,10 +59,11 @@ const ResultsScreen = ({ navigation, route }) => {
           { text: "Ok", onPress: () => navigation.goBack() }
         ]);
       setMovies(r.data.Search);
+      setResNum(r.data.totalResults);
     });
 
   const loadExtra = () => {
-    if (currentPage > 5) return;
+    if (currentPage > 5 || currentPage * 10 > resNum) return;
     getSearch(search, currentPage + 1).then(r => {
       const newList = [...movies, ...r.data.Search];
       setMovies(newList);
