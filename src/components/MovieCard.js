@@ -2,29 +2,20 @@ import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { activeIcon, inactiveIcon } from "../../constants/colors";
 import {
+  circleButtonSize,
   generalPadding,
   posterHeightBig,
   posterHeightSma,
   posterWidthBig,
   posterWidthSma
 } from "../../constants/dimensions";
-import { elevatedBox, selectedBox } from "../../constants/styles";
+import { elevatedBox, selectedBox, starCircle } from "../../constants/styles";
 import { year } from "../../constants/texts";
 
-const StarCircle = ({ fill, onPress, width = 50 }) => (
+const StarCircle = ({ fill, onPress, width = circleButtonSize }) => (
   <TouchableOpacity onPress={onPress}>
     <View
-      style={[
-        fill ? selectedBox : elevatedBox,
-        {
-          flex: 0,
-          width: width,
-          height: 50,
-          borderRadius: 25,
-          alignItems: "center",
-          justifyContent: "center"
-        }
-      ]}
+      style={[fill ? selectedBox : elevatedBox, starCircle, { width: width }]}
     >
       <Image
         resizeMode="contain"

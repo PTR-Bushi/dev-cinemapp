@@ -9,7 +9,8 @@ import {
   boxBorder,
   generalPadding,
   componentsSeparation,
-  headerLeftSize
+  headerLeftSize,
+  circleButtonSize
 } from "./dimensions";
 
 export const mainContainer = {
@@ -58,4 +59,12 @@ export const headerLeftStyle = {
   width: headerLeftSize,
   height: headerLeftSize,
   tintColor: generalText
+};
+
+export const starCircle = {
+  flex: 0,
+  height: circleButtonSize,
+  borderRadius: circleButtonSize / 2,
+  alignItems: "center",
+  justifyContent: "center"
 };
