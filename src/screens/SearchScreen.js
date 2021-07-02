@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Alert, View, StyleSheet, TextInput } from "react-native";
+import { Alert, View, StyleSheet, Text, TextInput } from "react-native";
+import {
+  generalPadding,
+  textSize,
+  titleSize
+} from "../../constants/dimensions";
 import {
   loweredBox,
   mainContainer,
@@ -9,7 +14,9 @@ import {
   searchButton,
   searchErrorText,
   searchErrorTitle,
-  searchPlaceholder
+  searchPlaceholder,
+  welcomeText,
+  welcomeTitle
 } from "../../constants/texts";
 import { PrimaryButton } from "../components/Buttons";
 
@@ -34,6 +41,8 @@ const SearchScreen = ({ navigation }) => {
   };
   return (
     <View style={styles.mainContainer}>
+      <Text style={styles.welcomeTitle}>{welcomeTitle}</Text>
+      <Text style={styles.welcomeText}>{welcomeText}</Text>
       <SearchBar
         text={searchParam}
         setText={text => setsearchParam(text)}
@@ -47,7 +56,13 @@ const SearchScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   mainContainer: mainContainer,
-  searchBar: loweredBox
+  searchBar: loweredBox,
+  welcomeTitle: {
+    marginTop: generalPadding,
+    fontSize: titleSize,
+    fontWeight: "bold"
+  },
+  welcomeText: { marginBottom: generalPadding, fontSize: textSize }
 });
 
 export default SearchScreen;

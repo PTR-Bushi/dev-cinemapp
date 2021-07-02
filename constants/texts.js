@@ -6,6 +6,9 @@ export const screenNames = {
   Favorites: "Favoritos"
 };
 
+export const welcomeTitle = "Cinema APP";
+export const welcomeText = "Bem vindo ao mundo espetacular do cinema";
+
 export const searchPlaceholder = "Digite o filme desejado...";
 export const searchButton = "Buscar";
 
