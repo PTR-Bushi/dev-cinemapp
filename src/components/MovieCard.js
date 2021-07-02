@@ -59,15 +59,17 @@ const MovieCard = ({
     }}
   >
     <View style={{ flexDirection: "row", flexShrink: 1 }}>
-      <Image
-        resizeMode="contain"
-        source={{ uri: itemPoster }}
-        style={{
-          width: selected ? posterWidthBig : posterWidthSma,
-          height: selected ? posterHeightBig : posterHeightSma,
-          marginRight: generalPadding
-        }}
-      />
+      {!!itemPoster && (
+        <Image
+          resizeMode="contain"
+          source={{ uri: itemPoster }}
+          style={{
+            width: selected ? posterWidthBig : posterWidthSma,
+            height: selected ? posterHeightBig : posterHeightSma,
+            marginRight: generalPadding
+          }}
+        />
+      )}
       <View
         style={{
           flexShrink: 1,
