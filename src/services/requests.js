@@ -5,7 +5,7 @@ export const getService = (url, params, headers) =>
   axios
     .get(url, { params, headers })
     .then(r => r)
-    .catch(e => console.log("FLAG E1", e));
+    .catch(e => alert("Error"));
 
 export const getSearch = (search, page = 1) =>
   getService(GET_URL + search + `&page=${page}`).then(r => r);

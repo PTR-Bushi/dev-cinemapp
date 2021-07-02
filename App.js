@@ -10,7 +10,6 @@ const initStorage = (keys = defKeys) => {
     AsyncStorage.getItem(element.key)
       .then(r => {
         if (!r) AsyncStorage.setItem(element.key, element.value);
-        console.log(r);
       })
       .catch(e => AsyncStorage.setItem(element.key, element.value));
   });
