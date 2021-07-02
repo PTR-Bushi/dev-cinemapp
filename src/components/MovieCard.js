@@ -59,17 +59,24 @@ const MovieCard = ({
     }}
   >
     <View style={{ flexDirection: "row", flexShrink: 1 }}>
-      {!!itemPoster && (
-        <Image
-          resizeMode="contain"
-          source={{ uri: itemPoster }}
-          style={{
-            width: selected ? posterWidthBig : posterWidthSma,
-            height: selected ? posterHeightBig : posterHeightSma,
-            marginRight: generalPadding
-          }}
-        />
-      )}
+      <View
+        style={{
+          width: selected ? posterWidthBig : posterWidthSma,
+          height: selected ? posterHeightBig : posterHeightSma,
+          marginRight: generalPadding
+        }}
+      >
+        {!!itemPoster && itemPoster !== "N/A" && (
+          <Image
+            resizeMode="contain"
+            source={{ uri: itemPoster }}
+            style={{
+              width: "100%",
+              height: "100%"
+            }}
+          />
+        )}
+      </View>
       <View
         style={{
           flexShrink: 1,
