@@ -8,4 +8,4 @@ export const getService = (url, params, headers) =>
     .catch(e => console.log("FLAG E1", e));
 
 export const getSearch = (search, page = 1) =>
-  getService(GET_URL + search + `&page=${page}`).then(r => r);
+  getService(GET_URL + search + `&page=${page}&type=movie`).then(r => r);
