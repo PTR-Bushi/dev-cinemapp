@@ -9,6 +9,12 @@ import FavesScreen from "../screens/FavesScreen";
 import TabIcon from "../components/TabIcon";
 import { activeIcon, inactiveIcon } from "../../constants/colors";
 import HeaderLeft from "../components/HeaderLeft";
+import {
+  FavesScreenName,
+  ResultsScreenName,
+  screenNames,
+  SearchScreenName
+} from "../../constants/texts";
 
 const SearchStack = createStackNavigator();
 
@@ -20,8 +26,16 @@ const SearchStackScreen = () => (
         canGoBack ? <HeaderLeft onPress={onPress} /> : null
     }}
   >
-    <SearchStack.Screen name="Search" component={SearchScreen} />
-    <SearchStack.Screen name="Results" component={ResultsScreen} />
+    <SearchStack.Screen
+      name="Search"
+      component={SearchScreen}
+      options={{ title: screenNames.Search }}
+    />
+    <SearchStack.Screen
+      name="Results"
+      component={ResultsScreen}
+      options={{ title: screenNames.Results }}
+    />
   </SearchStack.Navigator>
 );
 
@@ -29,7 +43,11 @@ const FavesStack = createStackNavigator();
 
 const FavesStackScreen = () => (
   <FavesStack.Navigator>
-    <FavesStack.Screen name="Favorites" component={FavesScreen} />
+    <FavesStack.Screen
+      name="Favorites"
+      component={FavesScreen}
+      options={{ title: screenNames.Favorites }}
+    />
   </FavesStack.Navigator>
 );
 
@@ -47,7 +65,8 @@ const Navigator = ({}) => (
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => (
           <TabIcon focused={focused} color={color} size={size} route={route} />
-        )
+        ),
+        title: screenNames[route.name]
       })}
     >
       <Tab.Screen name="Search" component={SearchStackScreen} />

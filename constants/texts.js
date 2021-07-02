@@ -1,5 +1,11 @@
 export const STORAGE_FAVORITES = "favorites";
 
+export const screenNames = {
+  Search: "Busca",
+  Results: "Resultados",
+  Favorites: "Favoritos"
+};
+
 export const searchPlaceholder = "Digite o filme desejado...";
 export const searchButton = "Buscar";
 
